@@ -13,7 +13,8 @@
       </div>
       <div class="col-md-6">
         <h2>Aggergated Data</h2>
-        {{state.IBM}}
+         <button type="submit" @click.pervent="CalBMI()" class="btn btn-primary">Calculate BMI</button>
+        <p>BMI: {{state.myinfo.UserBMI}}</p>
       </div>
     </div>
     <div class="row">
@@ -52,8 +53,7 @@ export default {
   data() {
     return {
       state: {
-        myinfo: [],
-        IBM: ""
+        myinfo: []
       }
     };
   },
@@ -63,7 +63,9 @@ export default {
   methods: {
     refresh() {
       api.GetCurrentUser().then(x => (this.state.myinfo = x));
-      api.getBMI().then(x => (this.state.IBM = x));
+    },
+    CalBMI() {
+      api.CalculateBMI();
     }
   }
 };

@@ -3,6 +3,9 @@ const { fitnessApp, User } = require('./model');
 var fitapp = new fitnessApp();
 const app = express.Router();
 
+function getBMI(height,weight){
+    
+}
 //shows all users
 app.get("/", function (req, res) {
     res.send(fitapp.users);
@@ -60,19 +63,19 @@ app.post('/addGoal', (req, res) => {
     res.send(CurrentUser);
 });
 
-//Adds a calories to intake
+//gets BMI
+//app.post('/setBMI', (req, res) => {
+   // const CurrentUser = fitapp.users.find(n => n.id === 1);
+   // var b =CurrentUser.BMI;
+   // CurrentUser.CalculateBMI(b);
+    //res.send(CurrentUser);
+//});
+
 app.post('/setBMI', (req, res) => {
     const CurrentUser = fitapp.users.find(n => n.id === 1);
-    var b =CurrentUser.BMI;
-    CurrentUser.CalculateBMI(b);
-    res.send(CurrentUser);
+
 });
-//gets BMI
-app.post('/getBMI', (req, res) => {
-    const CurrentUser = fitapp.users.find(n => n.id === 1);
-    var BMI = CurrentUser.BMI;
-    res.send(`Based on your Body Mass Index ${BMI}`)
-});
+
 
 //gets BMR
 app.post('/getBMR', (req, res) => {

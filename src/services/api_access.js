@@ -12,8 +12,8 @@ export function GetCurrentUser() {
     return myFetch(api_root + "/Currentuser");
 }
 
-export function GetBMI() {
-    return myFetch(api_root + "/getBMR");
+export function CalculateBMI() {
+    return myFetch(api_root + "/setBMI");
 }
 
 function myFetch(url = ``, data = null) {

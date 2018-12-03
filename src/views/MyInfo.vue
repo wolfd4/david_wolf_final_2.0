@@ -13,7 +13,7 @@
       </div>
       <div class="col-md-6">
         <h2>Aggergated Data</h2>
-         <button type="submit" @click.pervent="CalBMI()" class="btn btn-primary">Calculate BMI</button>
+        <button type="button" @click.pervent="CalBMI()" class="btn btn-primary">Calculate BMI</button>
         <p>BMI: {{state.myinfo.UserBMI}}</p>
       </div>
     </div>
@@ -44,6 +44,21 @@
     </div>
   </div>
 </template>
+
+<style>
+.jumbotron {
+  padding: 0.5em 0.6em;
+  h1 {
+    font-size: 2em;
+  }
+  p {
+    font-size: 1.2em;
+    .btn {
+      padding: 0.5em;
+    }
+  }
+}
+</style>
 
 <script>
 import * as api from "@/services/api_access";

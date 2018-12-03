@@ -3,9 +3,22 @@ const { fitnessApp, User } = require('./model');
 var fitapp = new fitnessApp();
 const app = express.Router();
 
-function getBMI(height,weight){
-    
+function getBMI(height, weight) {
+    var BMI = (703 * (weight / (Math.pow(height, 2))));
+    if (BMI < 18.5) {
+        return "You are underweight"
+    }
+    if (BMI >= 18.5 && BMI <= 24.9) {
+        return "You are a healthy weight"
+    }
+    if (BMI >= 25.0 && BMI <= 29.9) {
+        return "You are overweight"
+    }
+    if (BMI >= 30.0) {
+        return "You are obese"
+    }
 }
+
 //shows all users
 app.get("/", function (req, res) {
     res.send(fitapp.users);
@@ -65,15 +78,17 @@ app.post('/addGoal', (req, res) => {
 
 //gets BMI
 //app.post('/setBMI', (req, res) => {
-   // const CurrentUser = fitapp.users.find(n => n.id === 1);
-   // var b =CurrentUser.BMI;
-   // CurrentUser.CalculateBMI(b);
-    //res.send(CurrentUser);
+// const CurrentUser = fitapp.users.find(n => n.id === 1);
+// var b =CurrentUser.BMI;
+// CurrentUser.CalculateBMI(b);
+//res.send(CurrentUser);
 //});
 
-app.post('/setBMI', (req, res) => {
+app.get('/setBMI', (req, res) => {
     const CurrentUser = fitapp.users.find(n => n.id === 1);
-
+    var BMI = getBMI(CurrentUser.height,CurrentUser.weight);
+    CurrentUser.CalculateBMI(BMI);
+    res.send(CurrentUser);
 });
 
 

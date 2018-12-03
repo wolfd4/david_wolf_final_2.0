@@ -88,6 +88,7 @@ Extremely Active (very heavy exercise/ physical job/ training twice a day) 1.9"
 import * as api from "@/services/api_access";
 let loopTimer = null;
 
+
 export default {
   data() {
     return {
@@ -104,6 +105,7 @@ export default {
   methods: {
     login() {
       api.Login(this.name, this.age, this.height, this.weight, this.activity);
+      alert("User has been loged in");
     }
   }
 };

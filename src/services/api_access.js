@@ -16,6 +16,10 @@ export function CalculateBMI() {
     return myFetch(api_root + "/setBMI");
 }
 
+export function CalculateBMR_TDEE() {
+    return myFetch(api_root + "/setBMR_TDEE");
+}
+
 function myFetch(url = ``, data = null) {
     let options = {
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

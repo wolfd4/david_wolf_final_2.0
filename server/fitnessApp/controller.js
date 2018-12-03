@@ -19,12 +19,20 @@ function getBMI(height, weight) {
     }
 }
 
-//shows all users
+function getBMR(weight, height, age) {
+    return (66 + (6.2 * weight) + (12.7 * height) - (6.76 * age))
+}
+
+function getTDEE(BMR, activity) {
+    return (BMR * activity)
+}
+
+//shows all users*
 app.get("/", function (req, res) {
     res.send(fitapp.users);
 });
 
-//adds a user to the fitapp
+//adds a user to the fitapp*
 app.post('/users', (req, res) => {
     const user = new User(req.body.name, fitapp.users.length + 1, req.body.age, req.body.height, req.body.weight, req.body.activity);
     fitapp.users.push(user);
@@ -40,7 +48,7 @@ app.get('/users/:name', (req, res) => {
     res.send(username);
 })
 
-//displays current user's info
+//displays current user's info*
 app.get('/Currentuser', (req, res) => {
     const CurrentUser = fitapp.users.find(n => n.id === 1);
     res.send(CurrentUser);
@@ -76,34 +84,22 @@ app.post('/addGoal', (req, res) => {
     res.send(CurrentUser);
 });
 
-//gets BMI
-//app.post('/setBMI', (req, res) => {
-// const CurrentUser = fitapp.users.find(n => n.id === 1);
-// var b =CurrentUser.BMI;
-// CurrentUser.CalculateBMI(b);
-//res.send(CurrentUser);
-//});
-
+// gets CurrentUser's BMI
 app.get('/setBMI', (req, res) => {
     const CurrentUser = fitapp.users.find(n => n.id === 1);
-    var BMI = getBMI(CurrentUser.height,CurrentUser.weight);
+    var BMI = getBMI(CurrentUser.height, CurrentUser.weight);
     CurrentUser.CalculateBMI(BMI);
     res.send(CurrentUser);
 });
 
-
-//gets BMR
-app.post('/getBMR', (req, res) => {
+//gets CuurentUser's BMR and TDEE
+app.get('/setBMR_TDEE', (req, res) => {
     const CurrentUser = fitapp.users.find(n => n.id === 1);
-    var BMR = CurrentUser.BMR;
-    res.send(`Based on your basal metabolic rate, you use ${BMR} calories`)
-});
-
-//gets TDEE
-app.post('/getTDEE', (req, res) => {
-    const CurrentUser = fitapp.users.find(n => n.id === 1);
-    var TDEE = CurrentUser.TDEE;
-    res.send(`Based on your Total Daily Energy Expenditure, you use ${TDEE} calories`)
+    var BMR = getBMR(CurrentUser.weight, CurrentUser.height, CurrentUser.age);
+    CurrentUser.CalculateBMR(BMR);
+    var TDEE = getTDEE(BMR, CurrentUser.activity);
+    CurrentUser.CalculateTDEE(TDEE);
+    res.send(CurrentUser);
 });
 
 // views friends information

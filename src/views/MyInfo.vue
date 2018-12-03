@@ -3,49 +3,94 @@
     <div class="jumbotron">
       <h1>Welcome {{state.myinfo.name}}</h1>
     </div>
-    <div class="container"></div>
-    <div class="row">
-      <div class="col-md-6">
-        <h2>Basic info</h2>
-        <p>Age: {{state.myinfo.age}} years old</p>
-        <p>Height: {{state.myinfo.height}} inches tall</p>
-        <p>Weight: {{state.myinfo.weight}} pounds</p>
-      </div>
-      <div class="col-md-6">
-        <h2>Aggergated Data</h2>
-        <button type="button" @click.pervent="CalBMI()" class="btn btn-primary">Calculate BMI</button>
-        <p>BMI: {{state.myinfo.UserBMI}}</p>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Basic info</h2>
+          <p>Age: {{state.myinfo.age}} years old</p>
+          <p>Height: {{state.myinfo.height}} inches tall</p>
+          <p>Weight: {{state.myinfo.weight}} pounds</p>
+        </div>
+        <div class="col-md-6">
+          <h2>Aggergated Data</h2>
+          <button type="button" @click.pervent="AggergateData()" class="btn btn-primary">Calculate</button>
+          <p>Based on your BMI {{state.myinfo.UserBMI}}</p>
+          <p>Based on your info, your BMR is {{state.myinfo.UserBMR}} calories</p>
+          <p>Based on your info, your TDEE is {{state.myinfo.UserTDEE}} calories</p>
+        </div>
       </div>
     </div>
     <div class="row">
-      <h2>Plan a work week</h2>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="row">
-          <div class="col-md-4"></div>
-          <!-- this column empty -->
-          <div class="col-md-4">Monday</div>
-          <div class="col-md-4">Tuesday</div>
-        </div>
-      </div>
-
-      <div class="col-md-8">
-        <div class="row">
-          <div class="col-md-2">Wedensday</div>
-          <div class="col-md-2">Thursday</div>
-          <div class="col-md-2">Friday</div>
-          <div class="col-md-2">Saturday</div>
-          <div class="col-md-2">Sunday</div>
-          <div class="col-md-2"></div>
-          <!-- this column empty -->
-        </div>
+      <div class="col-12">
+        <table>
+          <tr>
+            <th>Monday</th>
+            <th>Tuseday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+          </tr>
+          <tr>
+            <td>
+              <button
+                type="button"
+                @click.pervent="AggergateData()"
+                class="btn btn-primary buttonW"
+              >Set Workout</button>
+            </td>
+            <td>
+              <button
+                type="button"
+                @click.pervent="AggergateData()"
+                class="btn btn-primary buttonW"
+              >Set Workout</button>
+            </td>
+            <td>
+              <button
+                type="button"
+                @click.pervent="AggergateData()"
+                class="btn btn-primary buttonW"
+              >Set Workout</button>
+            </td>
+            <td>
+              <button
+                type="button"
+                @click.pervent="AggergateData()"
+                class="btn btn-primary buttonW"
+              >Set Workout</button>
+            </td>
+            <td>
+              <button
+                type="button"
+                @click.pervent="AggergateData()"
+                class="btn btn-primary buttonW"
+              >Set Workout</button>
+            </td>
+            <td>
+              <button
+                type="button"
+                @click.pervent="AggergateData()"
+                class="btn btn-primary buttonW"
+              >Set Workout</button>
+            </td>
+            <td>
+              <button
+                type="button"
+                @click.pervent="AggergateData()"
+                class="btn btn-primary buttonW"
+              >Set Workout</button>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
 </template>
 
 <style>
+.buttonW{font-size: 10px}
 .jumbotron {
   padding: 0.5em 0.6em;
   h1 {
@@ -57,6 +102,23 @@
       padding: 0.5em;
     }
   }
+}
+,
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
 </style>
 
@@ -79,8 +141,9 @@ export default {
     refresh() {
       api.GetCurrentUser().then(x => (this.state.myinfo = x));
     },
-    CalBMI() {
+    AggergateData() {
       api.CalculateBMI();
+      api.CalculateBMR_TDEE();
     }
   }
 };

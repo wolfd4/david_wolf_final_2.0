@@ -2,7 +2,7 @@ class fitnessApp {
     constructor() {
         this.users = [];
     }
-};
+}
 
 class User {
     constructor(name, id, age, height, weight, activity) {
@@ -19,12 +19,14 @@ class User {
         this.CalculateBMI = function (x) {
             this.UserBMI = x;
         }
-    }
-    get BMR() {
-        return (66 + (6.2 * this.weight) + (12.7 * this.height) - (6.76 * this.age))
-    }
-    get TDEE() {
-        return (this.BMR * this.activity)
+        this.UserBMR = 0;
+        this.CalculateBMR = function (x) {
+            this.UserBMR = x;
+        }
+        this.UserTDEE = 0;
+        this.CalculateTDEE = function (x) {
+            this.UserTDEE = x;
+        }
     }
 }
 

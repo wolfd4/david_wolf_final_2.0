@@ -4,8 +4,16 @@ export function GetState() {
     return myFetch(api_root + "/");
 }
 
-export function Login(name, id, age, height, weight, activity) {
-    return myFetch(api_root + `/users`, { name, id, age, height, weight, activity })
+export function Login(name, age, height, weight, activity) {
+    return myFetch(api_root + `/users`, { name, age, height, weight, activity })
+}
+
+export function GetCurrentUser() {
+    return myFetch(api_root + "/Currentuser");
+}
+
+export function GetBMI() {
+    return myFetch(api_root + "/getBMR");
 }
 
 function myFetch(url = ``, data = null) {

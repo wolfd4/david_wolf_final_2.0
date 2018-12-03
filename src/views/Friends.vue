@@ -1,10 +1,10 @@
 <template>
   <div class="friends">
-          <div class="col-sm-4">
-        <ul>
-          <li v-for="User in state">{{User.name}}</li>
-        </ul>
-      </div>
+    <div class="col-sm-4">
+      <ul>
+        <li v-for="User in state">{{User.name}}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
       api.GetState().then(x => (this.state = x));
     },
     login() {
-      api.Login(this.name, this.age, this.height, this.activity, this.weight);
+      api.Login(this.name, his.height, this.age, this.activity, this.weight);
     }
   }
 };

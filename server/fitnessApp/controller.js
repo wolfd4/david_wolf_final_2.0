@@ -24,6 +24,12 @@ app.get('/users/:name', (req, res) => {
     res.send(username);
 })
 
+//displays current user's info
+app.get('/Currentuser', (req, res) => {
+    const CurrentUser = fitapp.users.find(n => n.id === 1);
+    res.send(CurrentUser);
+})
+
 //adds a friend to the user's friends list
 app.post('/addFriend/:name', (req, res) => {
     const friend = fitapp.users.find(n => n.name === String(req.params.name));

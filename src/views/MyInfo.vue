@@ -36,8 +36,13 @@
             <div class="form-group">
               <input type="text" v-model="workout1" placeholder="Enter Workout">
             </div>
-            <button type="button" @click.pervent="SetWork()" class="btn btn-primary buttonW">Set Workout</button>
+            <button
+              type="submit"
+              @click.pervent="SetWork1()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
           </form>
+          <p>{{state.myinfo.workouts[0]}}</p>
         </td>
         <td>
           <form id="Tuesday" @click.pervent>
@@ -45,11 +50,12 @@
               <input type="text" v-model="workout2" placeholder="Enter Workout">
             </div>
             <button
-              type="button"
-              @click.pervent="AggergateData()"
+              type="submit"
+              @click.pervent="SetWork2()"
               class="btn btn-primary buttonW"
             >Set Workout</button>
           </form>
+          <p>{{state.myinfo.workouts[1]}}</p>
         </td>
         <td>
           <form id="Wedensday" @click.pervent>
@@ -57,19 +63,25 @@
               <input type="text" v-model="workout3" placeholder="Enter Workout">
             </div>
             <button
-              type="button"
-              @click.pervent="AggergateData()"
+              type="submit"
+              @click.pervent="SetWork3()"
               class="btn btn-primary buttonW"
             >Set Workout</button>
           </form>
+          <p>{{state.myinfo.workouts[2]}}</p>
         </td>
         <td>
           <form id="Thrusday" @click.pervent>
             <div class="form-group">
               <input type="text" v-model="workout4" placeholder="Enter Workout">
             </div>
-            <button type="button" class="btn btn-primary buttonW">Set Workout</button>
+            <button
+              type="submit"
+              @click.pervent="SetWork4()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
           </form>
+          <p>{{state.myinfo.workouts[3]}}</p>
         </td>
         <td>
           <form id="Friday" @click.pervent>
@@ -77,11 +89,12 @@
               <input type="text" v-model="workout5" placeholder="Enter Workout">
             </div>
             <button
-              type="button"
-              @click.pervent="AggergateData()"
+              type="submit"
+              @click.pervent="SetWork5()"
               class="btn btn-primary buttonW"
             >Set Workout</button>
           </form>
+          <p>{{state.myinfo.workouts[4]}}</p>
         </td>
         <td>
           <form id="Saturday" @click.pervent>
@@ -89,11 +102,12 @@
               <input type="text" v-model="workout6" placeholder="Enter Workout">
             </div>
             <button
-              type="button"
-              @click.pervent="AggergateData()"
+              type="submit"
+              @click.pervent="SetWork6()"
               class="btn btn-primary buttonW"
             >Set Workout</button>
           </form>
+          <p>{{state.myinfo.workouts[5]}}</p>
         </td>
         <td>
           <form id="Sunday" @click.pervent>
@@ -101,11 +115,12 @@
               <input type="text" v-model="workout7" placeholder="Enter Workout">
             </div>
             <button
-              type="button"
-              @click.pervent="AggergateData()"
+              type="submit"
+              @click.pervent="SetWork7()"
               class="btn btn-primary buttonW"
             >Set Workout</button>
           </form>
+          <p>{{state.myinfo.workouts[6]}}</p>
         </td>
       </tr>
     </table>
@@ -134,7 +149,7 @@ table {
 
 td,
 th {
-  border: 1px solid #dddddd;
+  border: 1px solid #000000;
   text-align: left;
   padding: 8px;
 }
@@ -174,8 +189,26 @@ export default {
       api.CalculateBMI();
       api.CalculateBMR_TDEE();
     },
-    SetWork() {
-      api.SetWorkout();
+    SetWork1() {
+      api.SetWorkout(0, this.workout1);
+    },
+    SetWork2() {
+      api.SetWorkout(1, this.workout2);
+    },
+    SetWork3() {
+      api.SetWorkout(2, this.workout3);
+    },
+    SetWork4() {
+      api.SetWorkout(3, this.workout4);
+    },
+    SetWork5() {
+      api.SetWorkout(4, this.workout5);
+    },
+    SetWork6() {
+      api.SetWorkout(5, this.workout6);
+    },
+    SetWork7() {
+      api.SetWorkout(6, this.workout7);
     }
   }
 };

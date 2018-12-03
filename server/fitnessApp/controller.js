@@ -70,21 +70,14 @@ app.post('/addFriend/:name', (req, res) => {
 
 //Adds a workout to workout completed
 app.post('/addWorkout', (req, res) => {
+    var day = req.body.day;
     var workout = req.body.workout;
     const CurrentUser = fitapp.users.find(n => n.id === 1);
-    CurrentUser.workoutsDone.push(workout);
+    CurrentUser.workouts[day] = workout;
     res.send(CurrentUser);
 });
 
-//Adds a goal to users goals list 
-app.post('/addGoal', (req, res) => {
-    var goal = req.body.goal;
-    const CurrentUser = fitapp.users.find(n => n.id === 1);
-    CurrentUser.goals.push(goal);
-    res.send(CurrentUser);
-});
-
-// gets CurrentUser's BMI
+// gets CurrentUser's BMI*
 app.get('/setBMI', (req, res) => {
     const CurrentUser = fitapp.users.find(n => n.id === 1);
     var BMI = getBMI(CurrentUser.height, CurrentUser.weight);
@@ -92,7 +85,7 @@ app.get('/setBMI', (req, res) => {
     res.send(CurrentUser);
 });
 
-//gets CuurentUser's BMR and TDEE
+//gets CuurentUser's BMR and TDEE*
 app.get('/setBMR_TDEE', (req, res) => {
     const CurrentUser = fitapp.users.find(n => n.id === 1);
     var BMR = getBMR(CurrentUser.weight, CurrentUser.height, CurrentUser.age);
@@ -128,5 +121,5 @@ app.post('/addFriendtoUser/:name', (req, res) => {
     user.friendsList.push(addedFriend);
     res.send(user)
 });
-//display users information
+
 module.exports = app;

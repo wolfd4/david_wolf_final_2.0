@@ -20,6 +20,10 @@ export function CalculateBMR_TDEE() {
     return myFetch(api_root + "/setBMR_TDEE");
 }
 
+export function SetWorkout(day, workout) {
+    return myFetch(api_root + "/addWorkout", { day, workout });
+}
+
 function myFetch(url = ``, data = null) {
     let options = {
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

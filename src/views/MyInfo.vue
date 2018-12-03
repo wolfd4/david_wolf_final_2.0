@@ -20,77 +20,102 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <table>
-          <tr>
-            <th>Monday</th>
-            <th>Tuseday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-            <th>Sunday</th>
-          </tr>
-          <tr>
-            <td>
-              <button
-                type="button"
-                @click.pervent="AggergateData()"
-                class="btn btn-primary buttonW"
-              >Set Workout</button>
-            </td>
-            <td>
-              <button
-                type="button"
-                @click.pervent="AggergateData()"
-                class="btn btn-primary buttonW"
-              >Set Workout</button>
-            </td>
-            <td>
-              <button
-                type="button"
-                @click.pervent="AggergateData()"
-                class="btn btn-primary buttonW"
-              >Set Workout</button>
-            </td>
-            <td>
-              <button
-                type="button"
-                @click.pervent="AggergateData()"
-                class="btn btn-primary buttonW"
-              >Set Workout</button>
-            </td>
-            <td>
-              <button
-                type="button"
-                @click.pervent="AggergateData()"
-                class="btn btn-primary buttonW"
-              >Set Workout</button>
-            </td>
-            <td>
-              <button
-                type="button"
-                @click.pervent="AggergateData()"
-                class="btn btn-primary buttonW"
-              >Set Workout</button>
-            </td>
-            <td>
-              <button
-                type="button"
-                @click.pervent="AggergateData()"
-                class="btn btn-primary buttonW"
-              >Set Workout</button>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
+    <table>
+      <tr>
+        <th>Monday</th>
+        <th>Tuseday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+        <th>Sunday</th>
+      </tr>
+      <tr>
+        <td>
+          <form id="Monday" @click.pervent>
+            <div class="form-group">
+              <input type="text" v-model="workout1" placeholder="Enter Workout">
+            </div>
+            <button type="button" @click.pervent="SetWork()" class="btn btn-primary buttonW">Set Workout</button>
+          </form>
+        </td>
+        <td>
+          <form id="Tuesday" @click.pervent>
+            <div class="form-group">
+              <input type="text" v-model="workout2" placeholder="Enter Workout">
+            </div>
+            <button
+              type="button"
+              @click.pervent="AggergateData()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
+          </form>
+        </td>
+        <td>
+          <form id="Wedensday" @click.pervent>
+            <div class="form-group">
+              <input type="text" v-model="workout3" placeholder="Enter Workout">
+            </div>
+            <button
+              type="button"
+              @click.pervent="AggergateData()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
+          </form>
+        </td>
+        <td>
+          <form id="Thrusday" @click.pervent>
+            <div class="form-group">
+              <input type="text" v-model="workout4" placeholder="Enter Workout">
+            </div>
+            <button type="button" class="btn btn-primary buttonW">Set Workout</button>
+          </form>
+        </td>
+        <td>
+          <form id="Friday" @click.pervent>
+            <div class="form-group">
+              <input type="text" v-model="workout5" placeholder="Enter Workout">
+            </div>
+            <button
+              type="button"
+              @click.pervent="AggergateData()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
+          </form>
+        </td>
+        <td>
+          <form id="Saturday" @click.pervent>
+            <div class="form-group">
+              <input type="text" v-model="workout6" placeholder="Enter Workout">
+            </div>
+            <button
+              type="button"
+              @click.pervent="AggergateData()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
+          </form>
+        </td>
+        <td>
+          <form id="Sunday" @click.pervent>
+            <div class="form-group">
+              <input type="text" v-model="workout7" placeholder="Enter Workout">
+            </div>
+            <button
+              type="button"
+              @click.pervent="AggergateData()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
+          </form>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <style>
-.buttonW{font-size: 10px}
+.buttonW {
+  font-size: 10px;
+}
 .jumbotron {
   padding: 0.5em 0.6em;
   h1 {
@@ -98,9 +123,6 @@
   }
   p {
     font-size: 1.2em;
-    .btn {
-      padding: 0.5em;
-    }
   }
 }
 ,
@@ -131,7 +153,14 @@ export default {
     return {
       state: {
         myinfo: []
-      }
+      },
+      workout1: "",
+      workout2: "",
+      workout3: "",
+      workout4: "",
+      workout5: "",
+      workout6: "",
+      workout7: ""
     };
   },
   created() {
@@ -144,6 +173,9 @@ export default {
     AggergateData() {
       api.CalculateBMI();
       api.CalculateBMR_TDEE();
+    },
+    SetWork() {
+      api.SetWorkout();
     }
   }
 };

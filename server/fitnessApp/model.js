@@ -12,10 +12,9 @@ class User {
         this.height = height;
         this.weight = weight;
         this.activity = activity;
-        this.workoutsDone = [];
+        this.workouts = [" "," "," "," "," "," "," "];
         this.friendsList = [];
-        this.goals = [];
-        this.UserBMI = "";
+        this.UserBMI = " ";
         this.CalculateBMI = function (x) {
             this.UserBMI = x;
         }

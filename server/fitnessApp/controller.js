@@ -61,10 +61,10 @@ app.post('/addGoal', (req, res) => {
 });
 
 //Adds a calories to intake
-app.post('/setIntake', (req, res) => {
+app.post('/setBMI', (req, res) => {
     const CurrentUser = fitapp.users.find(n => n.id === 1);
-    var inTake = req.body.inTake;
-    CurrentUser.changeInTake(inTake);
+    var b =CurrentUser.BMI;
+    CurrentUser.CalculateBMI(b);
     res.send(CurrentUser);
 });
 //gets BMI

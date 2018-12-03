@@ -15,9 +15,9 @@ class User{
         this.workoutsDone = [];
         this.friendsList = [];
         this.goals = [];
-        this.calorieInTake = 0;
-        this.changeInTake = function(inTake){
-            this.calorieInTake = inTake;
+        this.UserBMI ="";
+        this.CalculateBMI = function(x){
+            this.UserBMI = x;
         }
     };
     get BMI(){

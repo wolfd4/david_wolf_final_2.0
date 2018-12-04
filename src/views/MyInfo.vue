@@ -12,8 +12,14 @@
           <p>Weight: {{state.myinfo.weight}} pounds</p>
         </div>
         <div class="col-md-6">
-          <h2>Aggergated Data</h2>
-          <button type="button" @click.pervent="AggergateData()" class="btn btn-primary">Calculate</button>
+          <h2>
+            Aggergated Data
+            <button
+              type="button"
+              @click.pervent="AggergateData()"
+              class="btn btn-primary"
+            >Calculate</button>
+          </h2>
           <p>Based on your BMI {{state.myinfo.UserBMI}}</p>
           <p>Based on your info, your BMR is {{state.myinfo.UserBMR}} calories</p>
           <p>Based on your info, your TDEE is {{state.myinfo.UserTDEE}} calories</p>
@@ -22,13 +28,76 @@
     </div>
     <table>
       <tr>
-        <th>Monday</th>
-        <th>Tuseday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
-        <th>Saturday</th>
-        <th>Sunday</th>
+        <th>
+          <div class="wrapper">
+            Monday
+            <button
+              type="submit"
+              @click.pervent="SetWork1()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
+          </div>
+        </th>
+        <th>
+          <div class="wrapper">
+            Tuseday
+            <button
+              type="submit"
+              @click.pervent="SetWork2()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
+          </div>
+        </th>
+        <th>
+          <div class="wrapper">
+            Wednesday
+            <button
+              type="submit"
+              @click.pervent="SetWork3()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
+          </div>
+        </th>
+        <th>
+          <div class="wrapper">
+            Thursday
+            <button
+              type="submit"
+              @click.pervent="SetWork4()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
+          </div>
+        </th>
+        <th>
+          <div class="wrapper">
+            Friday
+            <button
+              type="submit"
+              @click.pervent="SetWork5()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
+          </div>
+        </th>
+        <th>
+          <div class="wrapper">
+            Saturday
+            <button
+              type="submit"
+              @click.pervent="SetWork6()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
+          </div>
+        </th>
+        <th>
+          <div class="wrapper">
+            Sunday
+            <button
+              type="submit"
+              @click.pervent="SetWork7()"
+              class="btn btn-primary buttonW"
+            >Set Workout</button>
+          </div>
+        </th>
       </tr>
       <tr>
         <td>
@@ -36,11 +105,6 @@
             <div class="form-group">
               <input type="text" v-model="workout1" placeholder="Enter Workout">
             </div>
-            <button
-              type="submit"
-              @click.pervent="SetWork1()"
-              class="btn btn-primary buttonW"
-            >Set Workout</button>
           </form>
           <p>{{state.myinfo.workouts[0]}}</p>
         </td>
@@ -49,11 +113,6 @@
             <div class="form-group">
               <input type="text" v-model="workout2" placeholder="Enter Workout">
             </div>
-            <button
-              type="submit"
-              @click.pervent="SetWork2()"
-              class="btn btn-primary buttonW"
-            >Set Workout</button>
           </form>
           <p>{{state.myinfo.workouts[1]}}</p>
         </td>
@@ -62,11 +121,6 @@
             <div class="form-group">
               <input type="text" v-model="workout3" placeholder="Enter Workout">
             </div>
-            <button
-              type="submit"
-              @click.pervent="SetWork3()"
-              class="btn btn-primary buttonW"
-            >Set Workout</button>
           </form>
           <p>{{state.myinfo.workouts[2]}}</p>
         </td>
@@ -75,11 +129,6 @@
             <div class="form-group">
               <input type="text" v-model="workout4" placeholder="Enter Workout">
             </div>
-            <button
-              type="submit"
-              @click.pervent="SetWork4()"
-              class="btn btn-primary buttonW"
-            >Set Workout</button>
           </form>
           <p>{{state.myinfo.workouts[3]}}</p>
         </td>
@@ -88,11 +137,6 @@
             <div class="form-group">
               <input type="text" v-model="workout5" placeholder="Enter Workout">
             </div>
-            <button
-              type="submit"
-              @click.pervent="SetWork5()"
-              class="btn btn-primary buttonW"
-            >Set Workout</button>
           </form>
           <p>{{state.myinfo.workouts[4]}}</p>
         </td>
@@ -101,11 +145,6 @@
             <div class="form-group">
               <input type="text" v-model="workout6" placeholder="Enter Workout">
             </div>
-            <button
-              type="submit"
-              @click.pervent="SetWork6()"
-              class="btn btn-primary buttonW"
-            >Set Workout</button>
           </form>
           <p>{{state.myinfo.workouts[5]}}</p>
         </td>
@@ -114,11 +153,6 @@
             <div class="form-group">
               <input type="text" v-model="workout7" placeholder="Enter Workout">
             </div>
-            <button
-              type="submit"
-              @click.pervent="SetWork7()"
-              class="btn btn-primary buttonW"
-            >Set Workout</button>
           </form>
           <p>{{state.myinfo.workouts[6]}}</p>
         </td>
@@ -128,6 +162,9 @@
 </template>
 
 <style>
+.wrapper {
+  text-align: right;
+}
 .buttonW {
   font-size: 10px;
 }

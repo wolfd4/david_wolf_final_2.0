@@ -7,9 +7,22 @@
       <div class="row">
         <div class="col-md-6">
           <h2>Basic info</h2>
-          <p>Age: {{state.myinfo.age}} years old</p>
-          <p>Height: {{state.myinfo.height}} inches tall</p>
-          <p>Weight: {{state.myinfo.weight}} pounds</p>
+          <p>
+            Age: {{state.myinfo.age}} years old
+            <input type="number" v-model="Age">
+            <button type="button" @click.pervent="changeAge()" class="btn btn-primary">Edit</button>
+          </p>
+
+          <p>
+            Height: {{state.myinfo.height}} inches tall
+            <input type="number" v-model="Height">
+            <button type="button" @click.pervent="changeHeight()" class="btn btn-primary">Edit</button>
+          </p>
+          <p>
+            Weight: {{state.myinfo.weight}} pounds
+            <input type="number" v-model="Weight">
+            <button type="button" @click.pervent="changeWeight()" class="btn btn-primary">Edit</button>
+          </p>
         </div>
         <div class="col-md-6">
           <h2>
@@ -212,7 +225,10 @@ export default {
       workout4: "",
       workout5: "",
       workout6: "",
-      workout7: ""
+      workout7: "",
+      Age: {},
+      Height: {},
+      Weight: {}
     };
   },
   created() {
@@ -246,6 +262,18 @@ export default {
     },
     SetWork7() {
       api.SetWorkout(6, this.workout7);
+    },
+    changeAge() {
+      api.editAge(this.Age);
+      refresh();
+    },
+    changeHeight() {
+      api.editHeight(this.Height);
+      refresh();
+    },
+    changeWeight() {
+      api.editWeight(this.Weight);
+      refresh();
     }
   }
 };

@@ -24,6 +24,18 @@ export function SetWorkout(day, workout) {
     return myFetch(api_root + "/addWorkout", { day, workout });
 }
 
+export function editAge(age) {
+    return myFetch(api_root + "/editAge", { age });
+}
+
+export function editHeight(height) {
+    return myFetch(api_root + "/editHeight", { height });
+}
+
+export function editWeight(weight) {
+    return myFetch(api_root + "/editWeight", { weight });
+}
+
 export function findUser(id) {
     return myFetch(api_root + `/findUser/${id}`);
 }

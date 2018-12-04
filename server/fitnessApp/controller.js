@@ -39,17 +39,9 @@ app.post('/users', (req, res) => {
     res.send(user);
 })
 
-//retrieves user based on ID
+//retrieves user based on ID***
 app.get('/findUser/:id', (req, res) => {
     const username = fitapp.users.find(n => n.id == req.params.id);
-    if (!username) {
-        res.status(404).send('User not found');
-    };
-    res.send(username)
-})
-
-app.get('/findUser', (req, res) => {
-    const username = fitapp.users.find(n => n.id == req.body.id);
     if (!username) {
         res.status(404).send('User not found');
     };
@@ -62,7 +54,7 @@ app.get('/Currentuser', (req, res) => {
     res.send(CurrentUser);
 })
 
-//adds a friend to the user's friends list
+//adds a friend to the user's friends list****
 app.post('/addFriend/:id', (req, res) => {
     const friend = fitapp.users.find(n => n.id == req.params.id);
     if (!friend) {
@@ -76,7 +68,7 @@ app.post('/addFriend/:id', (req, res) => {
     res.send(CurrentUser)
 });
 
-//Adds a workout to workout completed
+//Adds a workout to workout list*
 app.post('/addWorkout', (req, res) => {
     var day = req.body.day;
     var workout = req.body.workout;

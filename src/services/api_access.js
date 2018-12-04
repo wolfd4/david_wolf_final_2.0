@@ -25,11 +25,7 @@ export function SetWorkout(day, workout) {
 }
 
 export function findUser(id) {
-    return myFetch(api_root + `/findUser/:${id}`)
-}
-
-export function findUser2(id) {
-    return myFetch(api_root + "/findUser", {id})
+    return myFetch(api_root + `/findUser/${id}`);
 }
 
 function myFetch(url = ``, data = null) {

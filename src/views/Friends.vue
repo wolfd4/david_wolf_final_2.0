@@ -8,7 +8,7 @@
             <div class="form-group">
               <input type="number" class="form-control" v-model="UserID" placeholder="Enter ID#">
             </div>
-            <button type="button" @click.pervent="findUser()" class="btn btn-primary">Search</button>
+            <button type="button" @click.pervent="SearchforUser()" class="btn btn-primary">Search</button>
           </form>
         </div>
         <p>{{user}}</p>
@@ -44,8 +44,8 @@ export default {
     refresh() {
       api.GetState().then(x => (this.state = x));
     },
-    findUser() {
-      api.findUser2(2).then(x => (this.user = x));
+    SearchforUser() {
+      api.findUser(this.UserID).then(x => (this.user = x));
     }
   }
 };

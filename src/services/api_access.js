@@ -28,6 +28,10 @@ export function findUser(id) {
     return myFetch(api_root + `/findUser/${id}`);
 }
 
+export function addFriend(id) {
+    return myFetch(api_root + `/addFriend/${id}`);
+}
+
 function myFetch(url = ``, data = null) {
     let options = {
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

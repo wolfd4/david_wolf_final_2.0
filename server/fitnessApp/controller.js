@@ -1,5 +1,5 @@
 const express = require('express');
-const { fitnessApp, User } = require('./model');
+const { fitnessApp, User, Profile } = require('./model');
 var fitapp = new fitnessApp();
 const app = express.Router();
 
@@ -41,11 +41,17 @@ app.post('/users', (req, res) => {
 
 //retrieves user based on ID***
 app.get('/findUser/:id', (req, res) => {
+    const CurrentUser = fitapp.users.find(n => n.id === 1);
     const username = fitapp.users.find(n => n.id == req.params.id);
     if (!username) {
         res.status(404).send('User not found');
     };
-    res.send(username)
+    if (CurrentUser.friendsList.find(n => n.id === username.id)) {
+        res.send(username)
+    } else {
+        const notFriend = new Profile(username.name, username.age)
+        res.send(notFriend)
+    }
 })
 
 //displays current user's info*
@@ -55,7 +61,7 @@ app.get('/Currentuser', (req, res) => {
 })
 
 //adds a friend to the user's friends list****
-app.post('/addFriend/:id', (req, res) => {
+app.get('/addFriend/:id', (req, res) => {
     const friend = fitapp.users.find(n => n.id == req.params.id);
     if (!friend) {
         res.status(404).send('Friend not found');

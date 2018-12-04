@@ -4,6 +4,13 @@ class fitnessApp {
     }
 }
 
+class Profile {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
 class User {
     constructor(name, id, age, height, weight, activity) {
         this.id = id;
@@ -12,7 +19,7 @@ class User {
         this.height = height;
         this.weight = weight;
         this.activity = activity;
-        this.workouts = [" "," "," "," "," "," "," "];
+        this.workouts = [" ", " ", " ", " ", " ", " ", " "];
         this.friendsList = [];
         this.UserBMI = " ";
         this.CalculateBMI = function (x) {
@@ -30,5 +37,5 @@ class User {
 }
 
 module.exports = {
-    fitnessApp, User
+    fitnessApp, User, Profile
 }

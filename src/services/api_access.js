@@ -24,6 +24,14 @@ export function SetWorkout(day, workout) {
     return myFetch(api_root + "/addWorkout", { day, workout });
 }
 
+export function findUser(id) {
+    return myFetch(api_root + `/findUser/:${id}`)
+}
+
+export function findUser2(id) {
+    return myFetch(api_root + "/findUser", {id})
+}
+
 function myFetch(url = ``, data = null) {
     let options = {
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

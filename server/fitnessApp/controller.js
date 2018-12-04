@@ -45,7 +45,11 @@ app.get('/findUser/:id', (req, res) => {
     const username = fitapp.users.find(n => n.id == req.params.id);
     if (!username) {
         res.status(404).send('User not found');
+
     };
+    if (username.id === 1) {
+        res.send(username)
+    }
     if (CurrentUser.friendsList.find(n => n.id === username.id)) {
         res.send(username)
     } else {

@@ -33,6 +33,15 @@ class User {
         this.CalculateTDEE = function (x) {
             this.UserTDEE = x;
         }
+        this.editAge = function (x) {
+            this.age = x;
+        }
+        this.editHeight = function (x) {
+            this.height = x;
+        }
+        this.editWeight = function (x) {
+            this.weight = x;
+        }
     }
 }
 

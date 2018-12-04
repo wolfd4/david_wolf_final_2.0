@@ -87,6 +87,30 @@ app.post('/addWorkout', (req, res) => {
     res.send(CurrentUser);
 });
 
+//edit CurrentUser Age
+app.post('/editAge', (req, res) => {
+    const CurrentUser = fitapp.users.find(n => n.id === 1);
+    var age = req.body.age;
+    CurrentUser.editAge(age);
+    res.send(CurrentUser);
+});
+
+//edit CurrentUser Height
+app.post('/editHeight', (req, res) => {
+    const CurrentUser = fitapp.users.find(n => n.id === 1);
+    var height = req.body.height;
+    CurrentUser.editHeight(height);
+    res.send(CurrentUser);
+});
+
+//edit CurrentUser Weight
+app.post('/editWeight', (req, res) => {
+    const CurrentUser = fitapp.users.find(n => n.id === 1);
+    var weight = req.body.weight;
+    CurrentUser.editWeight(weight);
+    res.send(CurrentUser);
+});
+
 // gets CurrentUser's BMI*
 app.get('/setBMI', (req, res) => {
     const CurrentUser = fitapp.users.find(n => n.id === 1);

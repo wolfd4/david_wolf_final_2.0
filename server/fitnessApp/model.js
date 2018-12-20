@@ -1,6 +1,7 @@
 class fitnessApp {
     constructor() {
         this.users = [];
+        this.usernames = [];
     }
 }
 

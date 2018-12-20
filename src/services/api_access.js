@@ -4,6 +4,10 @@ export function GetState() {
     return myFetch(api_root + "/");
 }
 
+export function GetUserNames() {
+    return myFetch(api_root + "/usernames");
+}
+
 export function Login(name, age, height, weight, activity) {
     return myFetch(api_root + `/users`, { name, age, height, weight, activity })
 }

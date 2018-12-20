@@ -32,12 +32,18 @@ app.get("/", function (req, res) {
     res.send(fitapp.users);
 });
 
+app.get("/usernames", function (req, res) {
+    res.send(fitapp.usernames);
+});
+
 //adds a user to the fitapp*
 app.post('/users', (req, res) => {
     const user = new User(req.body.name, fitapp.users.length + 1, req.body.age, req.body.height, req.body.weight, req.body.activity);
     fitapp.users.push(user);
+    fitapp.usernames.push(user.name);
     res.send(user);
 })
+
 
 //retrieves user based on ID***
 app.get('/findUser/:id', (req, res) => {
